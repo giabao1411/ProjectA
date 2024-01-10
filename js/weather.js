@@ -6,7 +6,7 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const searchInput= document.querySelector('.input-search');
 const suggestionsList = document.querySelector('.search-ul');
-let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
+let APIKEYGeoraphic='8W66sEz5kGC6jHG+n1A4Mg==rKz02ZW7h4uNtVP3';
 
 
     searchInput.addEventListener('input', handleInput);
