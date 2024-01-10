@@ -9,7 +9,7 @@ const suggestionsList = document.querySelector('.search-ul');
 let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
 
 
-    searchInput.addEventListener('input', debounce(handleInput, 300));
+    searchInput.addEventListener('input', handleInput);
 
     //test gpt 
     var myHeaders = new Headers();
@@ -21,7 +21,7 @@ let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
       redirect: 'follow'
     };
     
-    async function handleInput() {
+   async  function handleInput() {
         const query = searchInput.value.trim();
 
         container.style.height='100px';
@@ -36,7 +36,7 @@ let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
         }
     
         try {
-            const response = await fetch(`https://api.api-ninjas.com/v1/city?name=${query}&limit=5`, requestOptions);
+            const response = await  fetch(`https://api.api-ninjas.com/v1/city?name=${query}&limit=5`, requestOptions);
            
             const data = await response.json();
            
@@ -48,7 +48,7 @@ let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
     
     function displaySuggestions(data) {
         suggestionsList.innerHTML = ''; // Clear previous suggestions
-    
+       
         data.forEach(item => {
             const suggestionItem = document.createElement('li');
             suggestionItem.className = 'suggestion';
@@ -85,22 +85,23 @@ let APIKEYGeoraphic='CFQQlM1ClUIuFtM/hc6cbA==HB9sNrtmRHyCQ3AA';
 search.addEventListener('click',()=>{
     getWeatherByLocation();
 })
-searchInput.addEventListener('keydown', function(event) {
+searchInput.addEventListener('keydown', async function(event) {
     if(event.keyCode === 13)
     {
-        
-        getWeatherByLocation();
+       await handleInput();
+       getWeatherByLocation() ;
         
     }
     else
     {
+        
         return;
     }
 
 })
-function getWeatherByLocation(){
+ function getWeatherByLocation(){
     const APIKey='91e6d1368738e91ba6d806a9b367e74e';
-    const city = document.querySelector('.input-search').value;
+    const city = document.querySelector('.input-search').value.trim();
     
     if(city==''){
         return;
@@ -113,6 +114,7 @@ function getWeatherByLocation(){
             weatherBox.classList.remove('active');
             weatherDetails.classList.remove('active');
             error404.classList.add('active');
+            suggestionsList.innerHTML='';
             return;
         }
 
@@ -166,7 +168,7 @@ function getWeatherByLocation(){
         container.style.height='555px';
         weatherBox.classList.add('active');
         weatherDetails.classList.add('active');
-        suggestionsList.innerHTML = '';
+        suggestionsList.innerHTML='';
        
     })
 }
