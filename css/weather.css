@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppons:wght(@300;400;500;600;700;800;900&display=swap)");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../img/background.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+}
+.container{
+    position: relative;
+    width: 450px;
+    height: 100px;
+    background-color: rbga(255,255,255,.1);
+    border : 2px solid rgba(0, 0, 0, .2);
+    backdrop-filter: blur(2px);
+    padding: 20px;
+    border-radius: 16px;
+    color: #fff;
+    transition:  height .6s ease;
+}
+.container .search{
+    position: relative;
+    width: 100%;
+   
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+.search .search-ul{
+    position: absolute;
+    list-style: none;
+    text-align: left;
+    width: 100%;
+    top: 60px;
+    padding:0 48px 0 42px;
+    font-size: 25px ;
+    background-color: rgba(255,255,255,.1);
+    border:none;
+    outline: none;
+    border-radius: 16px;
+}
+.search-ul li{
+    margin:2px 0;
+    cursor: pointer;
+}
+.container .search .input-search{
+    
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    font-weight: 500;
+    color: #fff;    
+    text-transform: uppercase;
+    padding: 0 48px 0 42px;
+    font-size: 25px;
+
+}
+.weather-box,
+.weather-details,
+.not-found{
+    overflow: hidden;
+    visibility: hidden;
+}
+.weather-box .box,
+.not-found .box{
+    transform: translateY(-100%);
+}
+.weather-box.active .box,
+.not-found.active .box{
+    transform: translateY(0%);
+    transition: transform 1s ease;
+    transition-delay: .6s;
+}
+
+.weather-box.active,
+.weather-details.active,
+.not-found.active{
+    visibility: visible;
+}
+.search  .bx-search {
+    position: absolute;
+    border: none;
+    outline: none;
+    right: 0;
+    width: 40px;
+    height: 100px;
+    font-size: 28px;
+    background: transparent;
+    color: #fff;
+    padding: 0 40px 0 5px;
+    cursor: pointer;
+   
+}
+.search  .bxs-map {
+    position: absolute;
+    left: 10px;
+    font-size: 28px;
+    
+}
+.input-search::placeholder{
+    color:#fff;
+    text-transform: capitalize;
+    
+}
+.weather-box{
+    text-align: center;
+    margin: 40px auto;
+}
+.weather-box img {
+    width: 60%;
+}
+.weather-box .temperature{
+    position: relative;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 700;
+    margin:20px 0 6px -30px;
+}
+.weather-box .temperature span{
+    position: absolute;
+    font-size: 24px;
+    margin-left: 4px;
+}
+.weather-box .description{
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.weather-details{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+   
+}
+.weather-details .humidity,
+.weather-details .wind{
+    display: flex;
+    align-items: center;
+    width:50%;
+    transform: translateY(-100%);
+}
+
+.weather-details.active .humidity,
+.weather-details.active .wind{
+    transform: translateY(0%);
+    transition:  transform 1s ease;
+    transition-delay: 1.2s;
+}
+.weather-details .humidity{
+    padding-left: 20px;
+    justify-content: flex-start;
+}
+.weather-details .wind{
+    padding-left: 20px;
+    justify-content: flex-end;
+}
+.weather-details i {
+    font-size:56px;
+    margin-right: 10px;
+}
+.weather-details span{
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+}
+.weather-details p {
+    font-size : 14px;
+    font-weight: 500;
+}
+.not-found{
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    margin-top :110px;  
+}
+.not-found img{
+    width: 60%;
+}
+.not-found p {
+    font-size: 22px;
+    font-weight: 500;
+    margin-top:15px;
+}
